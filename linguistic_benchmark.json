@@ -1,0 +1,122 @@
+[
+    {
+        "index": 1,
+        "category": "Puzzle",
+        "question": "You have a weighted graph where multiple paths to the same node have identical cumulative costs. However, one of the edges in a tie leads to a goal state. Will UCS always find the optimal solution? Explain why or why not.",
+        "human_answer": "UCS will expand both paths with identical costs in arbitrary order, but it will continue searching until all paths are explored. If a dead end is encountered, UCS backtracks to explore other paths until it finds the optimal solution. Since UCS guarantees optimality, it will eventually find the goal if reachable."
+    },
+    {
+        "index": 2,
+        "category": "Relational",
+        "question": "What happens if UCS is run on a graph where all edge costs are the same? How does its behavior compare to BFS?",
+        "human_answer": "If all edge costs are the same, UCS behaves exactly like BFS. Both explore nodes in the order they are discovered, ensuring the shortest path in terms of number of edges."
+    },
+    {
+        "index": 3,
+        "category": "Puzzle",
+        "question": "In a UCS scenario, the first path to the goal has a cumulative cost of 10. If another path to the same goal with a cost of 5 exists but is discovered later, how does UCS handle this case?",
+        "human_answer": "UCS keeps expanding paths in increasing order of cumulative cost. Even if a goal is discovered with a cost of 10, the search will continue if paths with lower or equal costs remain in the priority queue. It ensures that the path with cost 5 will eventually be found and reported as optimal."
+    },
+    {
+        "index": 4,
+        "category": "Spatial",
+        "question": "Imagine a DFS exploring a maze. If the maze has infinite paths (without a cycle) and the goal is at the farthest point, how does DFS behave? Will it ever terminate?",
+        "human_answer": "DFS will keep exploring deeper into one branch indefinitely, as it does not return to previous branches until it reaches a dead end. In an infinite search space without a cycle detector, DFS can enter an infinite loop."
+    },
+    {
+        "index": 5,
+        "category": "Puzzle",
+        "question": "If DFS is applied to a binary tree with a depth limit of 3, what happens if the goal is located at depth 5? Can DFS still find it?",
+        "human_answer": "If the goal is at depth 5 and DFS is restricted to depth 3, it will not find the goal. Limited DFS requires increasing the depth limit in increments to explore deeper levels, a technique known as iterative deepening DFS."
+    },
+    {
+        "index": 6,
+        "category": "Puzzle",
+        "question": "How does DFS perform on a cyclic graph without a visited-node tracker? Describe a scenario where it gets stuck in an infinite loop.",
+        "human_answer": "Without tracking visited nodes, DFS can get stuck in cycles, leading to infinite loops. Using a visited set avoids revisiting nodes and ensures the search terminates."
+    },
+    {
+        "index": 7,
+        "category": "Spatial",
+        "question": "In a building with 10 floors, DFS is used to search for a missing child. The algorithm starts at floor 1 and goes up without returning to previous floors. What is the consequence if the child is on floor 9?",
+        "human_answer": "If DFS starts at floor 1 and moves upwards without backtracking, it will miss the child on floor 9 if it does not explore previous floors. This illustrates DFS’s limitation in completeness unless the search space is fully explored."
+    },
+    {
+        "index": 8,
+        "category": "Relational",
+        "question": "What happens if BFS encounters multiple nodes at the same level that connect to the goal? How does BFS decide which node to explore first?",
+        "human_answer": "BFS expands all nodes level by level. If multiple goal nodes exist at the same level, BFS finds the first one it encounters. All are equally optimal if the edge weights are uniform."
+    },
+    {
+        "index": 9,
+        "category": "Puzzle",
+        "question": "BFS is used to find the shortest path in a grid. If one of the paths is blocked halfway, how does BFS adjust its search strategy?",
+        "human_answer": "BFS will re-route its search through other available paths if one path becomes blocked. It continues exploring nodes at the current level until all possibilities are exhausted."
+    },
+    {
+        "index": 10,
+        "category": "Puzzle",
+        "question": "A BFS algorithm is used to explore a tree with branching factors of 3 at each level. How many nodes does BFS explore if the goal node is at depth 4?",
+        "human_answer": "At depth 4, BFS would have explored 3^4 = 81 nodes in total. It expands all nodes at each depth level before moving to the next."
+    },
+    {
+        "index": 11,
+        "category": "Relational",
+        "question": "How does BFS behave when applied to an unweighted graph compared to a weighted graph where all edge weights are equal?",
+        "human_answer": "On unweighted graphs, BFS and UCS behave identically, both guaranteeing the shortest path in terms of the number of edges."
+    },
+    {
+        "index": 12,
+        "category": "Puzzle",
+        "question": "An A* search algorithm is given a heuristic that always underestimates the true cost. Is A* guaranteed to find the optimal solution? Why or why not?",
+        "human_answer": "A heuristic that always underestimates is admissible. A* with an admissible heuristic guarantees finding the optimal solution."
+    },
+    {
+        "index": 13,
+        "category": "Puzzle",
+        "question": "Suppose you are using A* on a graph with a heuristic that returns a constant value for all nodes. How does this affect the behavior of the algorithm?",
+        "human_answer": "If the heuristic is constant for all nodes, A* behaves like UCS, relying only on path costs to prioritize nodes. This reduces A*'s efficiency."
+    },
+    {
+        "index": 14,
+        "category": "Puzzle",
+        "question": "You run A* with a heuristic that occasionally overestimates the distance to the goal. Will the algorithm still find the optimal path? Explain the conditions where it might fail.",
+        "human_answer": "If the heuristic occasionally overestimates, it is no longer admissible, and A* may fail to find the optimal path. It could miss better paths in favor of ones with misleadingly low estimated costs."
+    },
+    {
+        "index": 15,
+        "category": "Relational",
+        "question": "Compare the behavior of A* when the heuristic perfectly predicts the cost to the goal versus when it overestimates by a small constant value.",
+        "human_answer": "With a perfect heuristic, A* explores only the optimal path. With a small overestimation, it may explore suboptimal paths, reducing efficiency and risking non-optimal solutions."
+    },
+    {
+        "index": 16,
+        "category": "Puzzle",
+        "question": "You have a search problem with a graph containing cycles. Which search algorithm—DFS, BFS, or UCS—is most likely to get stuck, and why?",
+        "human_answer": "DFS is most likely to get stuck in cycles without proper tracking. BFS and UCS handle cycles better with visited-node tracking."
+    },
+    {
+        "index": 17,
+        "category": "Spatial",
+        "question": "A delivery robot is exploring a city grid using BFS. Some streets are closed, and the robot is instructed to find the shortest path while avoiding these blocks. How does BFS behave differently from UCS in this scenario?",
+        "human_answer": "UCS can accommodate changing edge weights by updating path costs dynamically. BFS cannot account for weight changes, so it may select suboptimal paths."
+    },
+    {
+        "index": 18,
+        "category": "Puzzle",
+        "question": "In a multi-agent setting, DFS is used by one agent, and A* by another. Both are searching for a hidden object. Which agent finds it first if both algorithms have identical start conditions and search the same graph?",
+        "human_answer": "A* would generally find the object first because it uses heuristic guidance, making it more efficient than DFS in many cases."
+    },
+    {
+        "index": 19,
+        "category": "Spatial",
+        "question": "You are using UCS and A* to search for the shortest path in a graph where the edge weights increase exponentially. Which algorithm will perform better, and why?",
+        "human_answer": "A* with an admissible heuristic will perform better than UCS because it focuses on promising paths, reducing the search space significantly."
+    },
+    {
+        "index": 20,
+        "category": "Puzzle",
+        "question": "You modify a DFS algorithm to stop searching after finding a certain number of solutions. What effect does this have on the completeness of the algorithm, especially compared to BFS?",
+        "human_answer": "Stopping DFS early compromises completeness. Unlike BFS, which explores all possibilities at each level, DFS may miss additional solutions deeper in the tree."
+    }
+]
