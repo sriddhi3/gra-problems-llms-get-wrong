@@ -1,8 +1,6 @@
 # README
 
-# Code for "Easy Problem That LLMs Get Wrong" Paper
-
-ArXiv Paper: [https://arxiv.org/abs/2405.19616](https://arxiv.org/abs/2405.19616)
+reference: [https://arxiv.org/abs/2405.19616](https://arxiv.org/abs/2405.19616)
 
 ### Benchmark Results
 
@@ -41,7 +39,7 @@ This tool facilitates benchmarking and statistical analysis of various Language 
 
 ### Features
 
-- **LLM Query Interface:** Interface to send queries to different LLMs like OpenAI's GPT models, Mistral, etc.
+- **LLM Query Interface:** Interface to send queries to different LLMs like OpenAI's GPT models, Mistral, etc. (currently only doing it on chatgpt)
 - **Asynchronous Processing:** Batch processing of queries to LLMs for efficient data handling.
 - **Benchmark and Evaluation:** Load benchmark questions, obtain model responses, and evaluate them according to a predefined rubric.
 - **Statistical Analysis:** Calculate mean scores, standard deviations, and confidence intervals of model performances.
@@ -51,7 +49,7 @@ This tool facilitates benchmarking and statistical analysis of various Language 
 First, clone this repository to your local machine:
 
 ```shell
-git clone https://github.com/autogenai/easy-problems-that-llms-get-wrong
+git clone https://github.com/sriddhi3/gra-problems-llms-get-wrong.git
 cd language-model-benchmark-tool
 ```
 
@@ -116,7 +114,3 @@ There are vast limitations to this approach, but further improvements might incl
   overfitting variance.
 * [ ] Testing advanced regularisation techniques for LLMs during the pre-training process.
 * [ ] Finding better methodologies to keep LLM outputs deterministic.
-
-### Contributing
-
-Contributions to enhance or extend the functionality of this tool are welcomed with open arms. Please adhere to conventional coding standards and include unit tests with your pull requests.
